@@ -1,0 +1,21 @@
+version: '3.5'
+ 
+services:
+  database:
+    container_name: database-postgresql
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: wildfire
+      PGDATA: /var/lib/postgresql/data/pgdata      
+    volumes:
+       - data:/var/lib/postgresql/data
+       - /srv/postgresql/data:/var/lib/postgresql/data/pgdata
+       - ./postgresql.conf.sample:/etc/postgresql/postgresql.conf
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+
+volumes:
+  data:
+
