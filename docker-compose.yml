@@ -9,13 +9,8 @@ services:
       POSTGRES_PASSWORD: wildfire
       PGDATA: /var/lib/postgresql/data/pgdata      
     volumes:
-       - data:/var/lib/postgresql/data
-       - /srv/postgresql/data:/var/lib/postgresql/data/pgdata
+       - /srv/suprimentos-server/databases/postgresql-data/:/var/lib/postgresql/data/pgdata
        - ./postgresql.conf.sample:/etc/postgresql/postgresql.conf
     ports:
       - 5432:5432
     restart: unless-stopped
-
-volumes:
-  data:
-
