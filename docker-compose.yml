@@ -1,16 +1,21 @@
-version: '3.5'
+version: '2.4'
  
 services:
-  database:
-    container_name: database-postgresql
+  postgresql:
+    container_name: postgresql
     image: postgres:9.6-alpine
+    env_file:
+      - ./files2docker/.env
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: wildfire
-      PGDATA: /var/lib/postgresql/data/pgdata      
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: sysdba
+      POSTGRES_DB: sysdba
     volumes:
-       - /srv/suprimentos-server/databases/postgresql-data/:/var/lib/postgresql/data/pgdata
-       - ./postgresql.conf.sample:/etc/postgresql/postgresql.conf
+       - ./files2docker/postgresql.conf.sample:/etc/postgresql/postgresql.conf
+       - ./files2docker/scripts:/scripts
+       - ${EXTERNAL_SCRIPTS_PATH-./files2docker/external-scripts}:/external-scripts
+       - ${LOCAL_PGDATA-./files2docker/postgresql-data}:/var/lib/postgresql/data/pgdata
+       - ${BACKUP_PATH-./files2docker/backup}:/backup
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT-5432}:5432
     restart: unless-stopped

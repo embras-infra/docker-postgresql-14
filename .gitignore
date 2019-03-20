@@ -1,0 +1,7 @@
+/files2docker/backup/
+/files2docker/external-scripts/
+/files2docker/postgresql-data/
+
+.env
+docker-compose.*
+!docker-compose.yml
