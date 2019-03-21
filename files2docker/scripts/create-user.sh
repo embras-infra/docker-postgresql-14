@@ -8,10 +8,10 @@ COLOR_CLEAN='\033[0m';
 example() {
   echo -e "${COLOR_DARK_GRAY}=================================="
   echo "How to use it:"
-  echo " create_user.sh <DATABASE-NAME> <NEW_USER> <PASSWORD> "
+  echo " create-user.sh <DATABASE-NAME> <NEW_USER> <PASSWORD> "
   echo
   echo " example:"
-  echo "   sh /scripts/create_user.sh meu_banco meu_usuario minha-senha"
+  echo "   sh /scripts/create-user.sh meu_banco meu_usuario minha-senha"
   echo -e "==================================${COLOR_CLEAN}"
 }
 

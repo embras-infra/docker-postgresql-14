@@ -11,10 +11,9 @@ services:
       POSTGRES_USER: sysdba
       POSTGRES_DB: sysdba
     volumes:
-       - ./files2docker/postgresql.conf.sample:/etc/postgresql/postgresql.conf
        - ./files2docker/scripts:/scripts
+       - ${DATABASES_PATH-./files2docker/databases}:/var/lib/postgresql/data/pgdata
        - ${EXTERNAL_SCRIPTS_PATH-./files2docker/external-scripts}:/external-scripts
-       - ${LOCAL_PGDATA-./files2docker/postgresql-data}:/var/lib/postgresql/data/pgdata
        - ${BACKUP_PATH-./files2docker/backup}:/backup
     ports:
       - ${POSTGRES_PORT-5432}:5432
