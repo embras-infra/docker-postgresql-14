@@ -5,15 +5,13 @@ services:
     container_name: postgresql
     image: postgres:9.6-alpine
     env_file:
-      - ./files2docker/.env
+      - .env
     environment:
-      PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_USER: sysdba
       POSTGRES_DB: sysdba
     volumes:
        - ./files2docker/scripts:/scripts
-       - ${DATABASES_PATH-./files2docker/databases}:/var/lib/postgresql/data/pgdata
-       - ${EXTERNAL_SCRIPTS_PATH-./files2docker/external-scripts}:/external-scripts
+       - ${LOCAL_PGDATA-./files2docker/databases}:/var/lib/postgresql/data
        - ${BACKUP_PATH-./files2docker/backup}:/backup
     ports:
       - ${POSTGRES_PORT-5432}:5432
