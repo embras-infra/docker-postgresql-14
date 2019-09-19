@@ -8,6 +8,7 @@ services:
       POSTGRES_USER: sysdba
       POSTGRES_DB: sysdba
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD-postgresql}
+      TZ: 'America/Sao_Paulo'
     volumes:
        - ./files2docker/scripts:/scripts
        - ${LOCAL_PGDATA-./files2docker/databases}:/var/lib/postgresql/data
