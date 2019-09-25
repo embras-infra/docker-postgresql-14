@@ -26,5 +26,4 @@ if [ -z $DATABASE_NAME ] || [ -z $NEW_DATABASE_NAME ]; then
 fi
 
 psql -U $POSTGRES_USER -c "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '$NEW_DATABASE_NAME' AND pid <> pg_backend_pid();"
-psql -U $POSTGRES_USER -c "DROP DATABASE IF EXISTS $NEW_DATABASE_NAME;"
 psql -U $POSTGRES_USER -c "ALTER DATABASE $DATABASE_NAME RENAME TO $NEW_DATABASE_NAME;"
