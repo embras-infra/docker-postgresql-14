@@ -5,8 +5,8 @@ services:
     container_name: postgresql
     image: postgres:9.6-alpine
     environment:
-      POSTGRES_USER: sysdba
-      POSTGRES_DB: sysdba
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD-postgresql}
       TZ: 'America/Sao_Paulo'
     volumes:
