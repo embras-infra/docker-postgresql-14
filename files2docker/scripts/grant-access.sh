@@ -25,4 +25,6 @@ if [ -z $DATABASE_NAME ] || [ -z $USER ]; then
   exit 1;
 fi
 
-psql -U $POSTGRES_USER -c "GRANT ALL PRIVILEGES ON DATABASE $DATABASE_NAME to $USER;"
+for tbl in `psql -U $POSTGRES_USER -qAt -c "select tablename from pg_tables where schemaname = 'public';" $DATABASE_NAME` ; do  psql -U $POSTGRES_USER -c "alter table \"$tbl\" owner to $USER" $DATABASE_NAME ; done
+for tbl in `psql -U $POSTGRES_USER -qAt -c "select sequence_name from information_schema.sequences where sequence_schema = 'public';" $DATABASE_NAME` ; do  psql -U $POSTGRES_USER -c "alter sequence \"$tbl\" owner to $USER" $DATABASE_NAME ; done
+for tbl in `psql -U $POSTGRES_USER -qAt -c "select table_name from information_schema.views where table_schema = 'public';" $DATABASE_NAME` ; do  psql -U $POSTGRES_USER -c "alter view \"$tbl\" owner to $USER" $DATABASE_NAME ; done
