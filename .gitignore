@@ -1,6 +1,9 @@
 .env
 docker-compose*
 
+files2docker/*
+
+!files2docker/postgresql.conf
 !files2docker/scripts/
 !files2docker/scripts/
 !docker-compose.yml

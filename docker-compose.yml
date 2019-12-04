@@ -9,7 +9,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD-postgresql}
       TZ: ${TZ-America/Sao_Paulo}
-      PGTZ: ${PGTZ-America/Sao_Paulo}
     volumes:
        - ./files2docker/scripts:/scripts
        - ./files2docker/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
