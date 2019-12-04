@@ -12,6 +12,7 @@ services:
       PGTZ: ${PGTZ-America/Sao_Paulo}
     volumes:
        - ./files2docker/scripts:/scripts
+       - ./files2docker/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
        - ${LOCAL_PGDATA-./files2docker/databases}:/var/lib/postgresql/data
        - ${BACKUP_PATH-./files2docker/backup}:/backup
     ports:
