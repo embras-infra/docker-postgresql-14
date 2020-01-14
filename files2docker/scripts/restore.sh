@@ -31,4 +31,7 @@ if [ -z $ENCODING ]; then
 else
   psql -U $POSTGRES_USER -c "CREATE DATABASE $DATABASE_NAME ENCODING "$ENCODING" LC_COLLATE 'C' LC_CTYPE 'C' TEMPLATE template0"
 fi
+
+sed -i "s/set_config('search_path', '', false)/set_config('search_path', 'public', false)/g" $FILE_SQL
+
 psql -U $POSTGRES_USER -d $DATABASE_NAME -f $FILE_SQL > /dev/null
