@@ -1,7 +1,8 @@
 .env
 docker-compose*
 
-files2docker/*
+files2docker/databases
+files2docker/backups
 
 !files2docker/postgresql.conf
 !files2docker/scripts/
