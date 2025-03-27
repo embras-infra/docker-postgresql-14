@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
   postgresql:
-    container_name: postgresql
+    container_name: ${CONTAINER_NAME}
     image: postgres:14.17-alpine3.21
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
